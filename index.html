@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Samireh Silva | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1e293b;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background: radial-gradient(circle at top, #1f2937 0, var(--bg) 50%, var(--bg-alt) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1.5rem;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .intro {
+      max-width: 620px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .intro p {
+      font-size: 0.95rem;
+      color: #d1d5db;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background-color: rgba(15, 118, 110, 0.12);
+      border: 1px solid rgba(45, 212, 191, 0.3);
+      color: #a5f3fc;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: row;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--border);
+      background-color: var(--card);
+      color: var(--text);
+      font-size: 0.85rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    main {
+      display: grid;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    section {
+      background-color: rgba(15, 23, 42, 0.7);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(16px);
+    }
+
+    section h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .project-card {
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      padding: 1rem 1.1rem;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 60%);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .project-title {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .project-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-list {
+      font-size: 0.82rem;
+      margin-left: 1rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .project-list li {
+      margin-bottom: 0.2rem;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.1rem;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+    }
+
+    /* Skills */
+    .skill-groups {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    @media (min-width: 640px) {
+      .skill-groups {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .skill-group-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .skill-list {
+      font-size: 0.88rem;
+      color: #e5e7eb;
+    }
+
+    /* About & Education */
+    .about-text {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin-bottom: 0.6rem;
+    }
+
+    .edu-item {
+      margin-top: 0.3rem;
+    }
+
+    .edu-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .edu-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact-text {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="intro">
+        <h1>Samireh Silva</h1>
+        <div class="subtitle">Computer Science Student · University of New Mexico</div>
+        <p>
+          Junior CS student interested in software engineering, algorithms, and building clean,
+          user-friendly applications. Balancing coursework with 4+ years of leadership experience
+          in customer-facing roles.
+        </p>
+        <div class="chip-row">
+          <span class="chip">Java</span>
+          <span class="chip">C</span>
+          <span class="chip">Data Structures</span>
+          <span class="chip">Object-Oriented Design</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="links">
+          <a class="btn btn-primary" href="resume.pdf" target="_blank">View Resume</a>
+        </div>
+        <div class="links">
+          <a class="btn" href="https://github.com/sammy0896/samireh-silva-portfolio.git" target="_blank">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/samireh-silva-18ab1b320/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Projects -->
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">Disease Simulation</div>
+              <div class="project-meta">Java · JavaFX</div>
+            </div>
+            <p class="project-desc">
+              Interactive simulation that models how a disease spreads through a population with different states
+              like Vulnerable, Sick, Immune, and Dead.
+            </p>
+            <ul class="project-list">
+              <li>Implemented core simulation logic and agent state transitions based on configurable parameters.</li>
+              <li>Built a JavaFX GUI to visualize agents on a grid with real-time updates.</li>
+              <li>Added event logging and configurable input via text-based config files.</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn" href="Disease-Simulation-Demo.mp4" target="_blank">Watch Demo</a>
+              <!-- <a class="btn" href="#" target="_blank">Live Demo</a> -->
+            </div>
+            <div class="project-links" style="margin-top:0.4rem;">
+              <span class="project-tag">OOP</span>
+              <span class="project-tag">Simulation</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">Dominoes Game</div>
+              <div class="project-meta">Java · OOP</div>
+            </div>
+            <p class="project-desc">
+              Console-based and GUI dominoes game with scoring, tile management, and multiplayer turn logic.
+            </p>
+            <ul class="project-list">
+              <li>Designed object model for tiles, players, boneyard, and board using Java classes and enums.</li>
+              <li>Implemented legal move detection and scoring rules.</li>
+              <li>Separated game logic from display to keep code modular and testable.</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn" href="https://github.com/UNM-CS351/project-2-dominos-sammy0896.git" target="_blank">Code</a>
+            </div>
+            <div class="project-links" style="margin-top:0.4rem;">
+              <span class="project-tag">Game Dev</span>
+              <span class="project-tag">Data Structures</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">Scrabble Scoring Tool</div>
+              <div class="project-meta">Java · File I/O</div>
+            </div>
+            <p class="project-desc">
+              Tool to verify Scrabble words and compute scores based on dictionaries and board multipliers.
+            </p>
+            <ul class="project-list">
+              <li>Loaded word dictionaries and tile values from text files.</li>
+              <li>Calculated word scores with letter and word multipliers from a board layout.</li>
+              <li>Used efficient data structures for fast lookup and validation.</li>
+            </ul>
+            <div class="project-links">
+              <a class="btn" href="https://github.com/your-username/scrabble-tool" target="_blank">Code</a>
+            </div>
+            <div class="project-links" style="margin-top:0.4rem;">
+              <span class="project-tag">Algorithms</span>
+              <span class="project-tag">Parsing</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill-groups">
+          <div>
+            <div class="skill-group-title">Languages</div>
+            <div class="skill-list">Java, C, Python</div>
+          </div>
+          <div>
+            <div class="skill-group-title">Tools & Tech</div>
+            <div class="skill-list">Git, VS Code, IntelliJ, JavaFX</div>
+          </div>
+          <div>
+            <div class="skill-group-title">CS Concepts</div>
+            <div class="skill-list">Data Structures & Algorithms, Object-Oriented Programming</div>
+          </div>
+          <div>
+            <div class="skill-group-title">Professional</div>
+            <div class="skill-list">Team leadership, customer service, communication, time management</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About / Education -->
+      <section id="about">
+        <h2>About & Education</h2>
+        <p class="about-text">
+          I am a junior at the University of New Mexico pursuing a B.S. in Computer Science.
+          I enjoy building interactive applications, understanding how systems work under the hood,
+          and continuously improving my problem-solving skills. I’m currently looking for software
+          engineering internships where I can contribute to real-world projects and grow as a developer.
+        </p>
+        <div class="edu-item">
+          <div class="edu-title">University of New Mexico</div>
+          <div class="edu-meta">B.S. Computer Science · Aug 2023 – May 2027 · GPA: 3.5</div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p class="contact-text">
+          The best way to reach me is by email. I’m happy to share more about my projects or experience.
+        </p>
+        <a class="contact-link" href="mailto:samireh0896@gmail.com">samireh0896@gmail.com</a>
+      </section>
+    </main>
+
+    <footer>
+      &copy; <span id="year"></span> Samireh Silva. Built with HTML &amp; CSS.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
