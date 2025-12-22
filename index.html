@@ -283,14 +283,13 @@
     /* Peekaboo art */
     .section-with-art {
       position: relative;
-      overflow: hidden; /* hides extra edges of drawings */
     }
 
     .art-peek {
       position: absolute;
-      width: 500px;     /* adjust for your drawing size */
+      width: 600px;     /* adjust for your drawing size */
       opacity: 1.00;    /* make it soft so it doesn’t overpower text */
-      z-index: -1;      /* keeps drawings behind the card content */
+      z-index: 2;      /* keeps drawings behind the card content */
       pointer-events: none;
     }
   </style>
@@ -326,9 +325,6 @@
     <main>
       <!-- Projects -->
       <section id="projects" class="section-with-art">
-        <!-- Your drawings peeking out around the projects box -->
-        <img src="kittypop.png" class="art-peek" alt="" style="top: 10px; left: -140px;">
-        <img src="art-right.png" class="art-peek" alt="" style="bottom: -40px; right: -60px;">
 
         <h2>Projects</h2>
         <div class="projects-grid">
@@ -366,6 +362,8 @@
             </div>
           </article>
         </div>
+        <img src="kittypop.png" class="art-peek" alt="" style="top: -80px; left: -290px;">
+        <img src="art-right.png" class="art-peek" alt="" style="bottom: -40px; right: -60px;">
       </section>
 
       <!-- Skills -->
