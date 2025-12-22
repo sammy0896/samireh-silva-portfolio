@@ -279,6 +279,20 @@
       font-size: 0.75rem;
       color: var(--muted);
     }
+
+    /* Peekaboo art */
+    .section-with-art {
+      position: relative;
+      overflow: hidden; /* hides extra edges of drawings */
+    }
+
+    .art-peek {
+      position: absolute;
+      width: 180px;     /* adjust for your drawing size */
+      opacity: 0.75;    /* make it soft so it doesn’t overpower text */
+      z-index: -1;      /* keeps drawings behind the card content */
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -311,7 +325,11 @@
 
     <main>
       <!-- Projects -->
-      <section id="projects">
+      <section id="projects" class="section-with-art">
+        <!-- Your drawings peeking out around the projects box -->
+        <img src="art-left.png" class="art-peek" alt="" style="top: -40px; left: -60px;">
+        <img src="art-right.png" class="art-peek" alt="" style="bottom: -40px; right: -60px;">
+
         <h2>Projects</h2>
         <div class="projects-grid">
           <article class="project-card">
@@ -325,7 +343,6 @@
             </p>
             <div class="project-links">
               <a class="btn" href="Disease-Simulation-DemoU.mp4" target="_blank">Watch Demo</a>
-              <!-- <a class="btn" href="#" target="_blank">Live Demo</a> -->
             </div>
             <div class="project-links" style="margin-top:0.4rem;">
               <span class="project-tag">Simulation</span>
@@ -393,7 +410,7 @@
       <section id="contact">
         <h2>Contact</h2>
         <p class="contact-text">
-         <a class="contact-link" href="mailto:ssilva13@unm.edu">ssilva13@unm.edu</a>
+          <a class="contact-link" href="mailto:ssilva13@unm.edu">ssilva13@unm.edu</a>
         </p>
         <a class="contact-link" href="mailto:samireh0896@gmail.com">samireh0896@gmail.com</a>
       </section>
@@ -409,4 +426,5 @@
   </script>
 </body>
 </html>
+
 
